@@ -5,31 +5,6 @@ function init() {
     gadgets.window.adjustHeight();
    
 }
-/*Get Normal Date*/
-
- /* function getISOStrict(date) {
-   
-   if (Date.prototype.toISOString) {
-        return date.toISOString().replace(/Z$/, "+0000");
-    }
-
-    function pad(number) {
-        var r = String(number);
-        if ( r.length === 1 ) {
-            r = '0' + r;
-        }
-        return r;
-    }
-
-    return date.getUTCDate();
-       + '-' + pad( date.getUTCMonth() + 1 )
-        + '-' + pad( date.getUTCFullYear() );
-        + 'T' + pad( date.getUTCHours() )
-       + ':' + pad( date.getUTCMinutes() )
-       + ':' + pad( date.getUTCSeconds() )
-       + '.' + String( (date.getUTCMilliseconds()/1000).toFixed(3) ).slice( 2, 5 )
-       + '+0000'; 
-} */
 
 // Perform a search and display the results
 function search() {
@@ -74,24 +49,28 @@ function search() {
             var contentSummary="";
             var author="";
             var avatar="";
-			
-
             var modifiedDate="";
-            
-
-
             var likeCount="";
             var type="";
             var username="";
+var str="";
             
+
             
             $.each(rows, function(index, row) {   
-					url=row.resources.html.ref;
+                    url=row.resources.html.ref;
                     subject=row.subject;
                     contentSummary=row.contentSummary;
                     author=row.author.name;
-                    modifiedDate=row.modificationDate.substr(0,10);
-					console.log('modifiedDate'+ modifiedDate);
+                    modifiedDate=row.modificationDate;
+                    str=modifiedDate..substr(0,10);
+		    console.log('modifiedDate'+ str);
+var myDate=str; 
+myDate=myDate.split("-"); 
+var dateM= myDate[2].substring(0,2);
+var newDate=myDate[2]+"/"+myDate[1]+"/"+myDate[0]; 
+
+alert(newDate); 
                     likeCount=row.likeCount;
                     type=row.type;
                     avatar=row.author.avatarURL;
@@ -112,7 +91,7 @@ function search() {
                     discussion +='<li><img src="'+ avatar + '" width=\'25px\' height=\'25px\' border=\'0\'/></li>';
                     discussion +='<li><a href=https://apps-onprem.jivesoftware.com/people/'+username+'>'+author+'</a></li>';
                     discussion +='<li>'+likeCount+'</li>';
-                    discussion +='<li>'+modifiedDate+'</li>';
+                    discussion +='<li>'+newDate+'</li>';
                     discussion +='</ul>';
                   
                }
