@@ -68,46 +68,47 @@ var str="";
                   myDate=str; 
 myDate=myDate.split("-"); 
 var dateM= myDate[1];
-var monthName="";
+var x="";
 
 switch (dateM){
 case 01:
-    monthName="Jan";
+    x="Jan";
     break;
   case 02:
-    monthName="Feb";
+    x="Feb";
     break;
   case 03:
-    monthName="Mar";
+    x="Mar";
     break;
   case 04:
-    monthName="Apr";
+    x="Apr";
 break;
 case 05:
-    monthName="May";
+    x="May";
     break;
   case 06:
-    monthName="Jun";
+    x="Jun";
     break;
   case 07:
-    monthName="Jul";
+    x="Jul";
     break;
   case 08:
-    monthName="Aug";
+    x="Aug";
 break;
 case 09:
-    monthName="Sep";
+    x="Sep";
     break;
   case 10:
-    monthName="Oct";
+    x="Oct";
     break;
   case 11:
-    monthName="Nov";
+    x="Nov";
     break;
   case 12:
-    monthName="Dec";
+    x="Dec";
 break;
 }
+var monthName=x;
 var newDate=monthName+" "+myDate[1]+","+myDate[0]; 
 
 
