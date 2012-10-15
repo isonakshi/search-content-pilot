@@ -6,13 +6,7 @@ function init() {
    
 }
 /*Get Normal Date*/
-function dateConvert(d)
-{
-function pad(n){return n<10 ? '0'+n : n}
-  return d.getUTCFullYear()+'-'
-      + pad(d.getUTCMonth()-1)+'-'
-      + pad(d.getUTCDate());
-}
+
  /* function getISOStrict(date) {
    
    if (Date.prototype.toISOString) {
@@ -80,7 +74,10 @@ function search() {
             var contentSummary="";
             var author="";
             var avatar="";
+			
+
             var modifiedDate="";
+			
             var likeCount="";
             var type="";
             var username="";
@@ -91,7 +88,11 @@ function search() {
                     subject=row.subject;
                     contentSummary=row.contentSummary;
                     author=row.author.name;
-                    modifiedDate=dateConvert(row.modificationDate);
+                    modifiedDate=row.modificationDate;
+					if(modifiedDate.length > 10) 
+			{
+			modifiedDate = modifiedDate.substring(0,10);
+			}
                     likeCount=row.likeCount;
                     type=row.type;
                     avatar=row.author.avatarURL;
