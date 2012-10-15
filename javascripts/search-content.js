@@ -109,7 +109,7 @@ case 09:
 break;
 }
 
-document.getElementById("search-results").innerHTML=x;
+document.innerHTML=x;
 var monthName=x;
 var newDate=monthName+" "+myDate[1]+","+myDate[0]; 
 
