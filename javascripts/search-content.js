@@ -69,6 +69,18 @@ var str="";
 myDate=myDate.split("-"); 
 var dateM= myDate[1];
 var x="";
+foreach ($[0] as $key => $value) {
+    switch ($key) {
+        case 'Products' :
+            // do something
+            break ;
+        case 'customers' :
+            // do something
+            break ;
+        case 'Models' :
+            // do something
+            break ;
+     }
 
 switch (dateM){
 case 01:
