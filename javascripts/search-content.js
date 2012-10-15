@@ -108,9 +108,10 @@ case 09:
     x="Dec";
 break;
 }
+
+document.getElementById("search-results").innerHTML=x;
 var monthName=x;
 var newDate=monthName+" "+myDate[1]+","+myDate[0]; 
-
 
 
                     likeCount=row.likeCount;
