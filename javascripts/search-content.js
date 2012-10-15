@@ -109,9 +109,8 @@ case 09:
 break;
 }
 
-document.innerHTML=x;
-var monthName=x;
-var newDate=monthName+" "+myDate[1]+","+myDate[0]; 
+
+var newDate=x+myDate[2]+","+myDate[0]; 
 
 
                     likeCount=row.likeCount;
