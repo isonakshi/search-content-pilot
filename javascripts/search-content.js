@@ -5,6 +5,14 @@ function init() {
     gadgets.window.adjustHeight();
    
 }
+/*Get Normal Date*/
+function dateConvert(d)
+{
+function pad(n){return n<10 ? '0'+n : n}
+  return d.getUTCFullYear()+'-'
+      + pad(d.getUTCMonth()-1)+'-'
+      + pad(d.getUTCDate());
+}
  /* function getISOStrict(date) {
    
    if (Date.prototype.toISOString) {
@@ -83,7 +91,7 @@ function search() {
                     subject=row.subject;
                     contentSummary=row.contentSummary;
                     author=row.author.name;
-                    modifiedDate=row.modificationDate;
+                    modifiedDate=dateConvert(row.modificationDate);
                     likeCount=row.likeCount;
                     type=row.type;
                     avatar=row.author.avatarURL;
