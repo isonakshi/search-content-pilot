@@ -91,7 +91,7 @@ function search() {
                     contentSummary=row.contentSummary;
                     author=row.author.name;
                     modifiedDate=row.modificationDate.substr(0,10);
-					console.log('modifiedDate');
+					console.log('modifiedDate'+ modifiedDate);
                     likeCount=row.likeCount;
                     type=row.type;
                     avatar=row.author.avatarURL;
