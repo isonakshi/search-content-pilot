@@ -54,7 +54,7 @@ function search() {
             var type="";
             var username="";
 var str="";
-var monthName="";
+
             
 
             
@@ -66,19 +66,20 @@ var monthName="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-var dateM= myDate[1];
+var dateM= myDate[1].substring(0,2);
+
 switch (dateM){
 case 01:
-    monthName="January";
+    monthName="Jan";
     break;
   case 02:
-    monthName="February";
+    monthName="Feb";
     break;
   case 03:
-    monthName="March";
+    monthName="Mar";
     break;
   case 04:
-    monthName="April";
+    monthName="Apr";
 break;
 case 05:
     monthName="May";
