@@ -55,6 +55,7 @@ function search() {
             var username="";
 var str="";
 
+
             
 
             
@@ -67,7 +68,7 @@ var str="";
                   myDate=str; 
 myDate=myDate.split("-"); 
 var dateM= myDate[1];
-var monthName;
+var monthName="";
 
 switch (dateM){
 case 01:
