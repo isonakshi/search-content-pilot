@@ -54,6 +54,7 @@ function search() {
             var type="";
             var username="";
 var str="";
+var monthName="";
             
 
             
@@ -65,9 +66,47 @@ var str="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-var dateM= myDate[2].substring(0,2);
-var newDate=myDate[2]+"/"+myDate[1]+"/"+myDate[0]; 
-alert(newDate); 
+var dateM= myDate[1].substring(0,2);
+switch (dateM){
+case 01:
+    monthName="January";
+    break;
+  case 02:
+    monthName="February";
+    break;
+  case 03:
+    monthName="March";
+    break;
+  case 04:
+    monthName="April";
+break;
+case 05:
+    monthName="May";
+    break;
+  case 06:
+    monthName="Jun";
+    break;
+  case 07:
+    monthName="Jul";
+    break;
+  case 08:
+    monthName="Aug";
+break;
+case 09:
+    monthName="Sep";
+    break;
+  case 10:
+    monthName="Oct";
+    break;
+  case 11:
+    monthName="Nov";
+    break;
+  case 12:
+    monthName="Dec";
+break;
+}
+var newDate=monthName+" "+myDate[1]+","+myDate[0]; 
+
 
 
                     likeCount=row.likeCount;
