@@ -63,7 +63,7 @@ var str="";
                     contentSummary=row.contentSummary;
                     author=row.author.name;
                     modifiedDate=row.modificationDate;
-                    str=modifiedDate..substr(0,10);
+                    str=modifiedDate.substr(0,10);
 		    console.log('modifiedDate'+ str);
 
                     likeCount=row.likeCount;
