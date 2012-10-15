@@ -90,7 +90,7 @@ function search() {
                     subject=row.subject;
                     contentSummary=row.contentSummary;
                     author=row.author.name;
-                    modifiedDate=row.modificationDate.substring(0,10);
+                    modifiedDate=row.modificationDate.substr(0,10);
                     likeCount=row.likeCount;
                     type=row.type;
                     avatar=row.author.avatarURL;
