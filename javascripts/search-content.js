@@ -66,7 +66,7 @@ var monthName="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-var dateM= myDate[1].substring(0,2);
+var dateM= myDate[1];
 switch (dateM){
 case 01:
     monthName="January";
