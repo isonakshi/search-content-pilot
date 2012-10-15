@@ -49,7 +49,7 @@ function search() {
             var contentSummary="";
             var author="";
             var avatar="";
-            var modifiedDate="";
+           var myDate="";
             var likeCount="";
             var type="";
             var username="";
@@ -62,9 +62,13 @@ var str="";
                     subject=row.subject;
                     contentSummary=row.contentSummary;
                     author=row.author.name;
-                    modifiedDate=row.modificationDate;
-                    str=modifiedDate.substr(0,10);
-		    console.log('modifiedDate'+ str);
+                    str=row.modificationDate.substr(0,10);
+                  myDate=str; 
+myDate=myDate.split("-"); 
+var dateM= myDate[2].substring(0,2);
+var newDate=myDate[2]+"/"+myDate[1]+"/"+myDate[0]; 
+alert(newDate); 
+
 
                     likeCount=row.likeCount;
                     type=row.type;
@@ -86,7 +90,7 @@ var str="";
                     discussion +='<li><img src="'+ avatar + '" width=\'25px\' height=\'25px\' border=\'0\'/></li>';
                     discussion +='<li><a href=https://apps-onprem.jivesoftware.com/people/'+username+'>'+author+'</a></li>';
                     discussion +='<li>'+likeCount+'</li>';
-                    discussion +='<li>'+str+'</li>';
+                    discussion +='<li>'+newDate+'</li>';
                     discussion +='</ul>';
                   
                }
