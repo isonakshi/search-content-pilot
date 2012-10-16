@@ -108,7 +108,7 @@ case 09:
 break;
 }
 
-var newDate=Dec+" "+myDate[2]+","+myDate[0]; 
+var newDate='Dec'+" "+myDate[2]+","+myDate[0]; 
 
 
                     likeCount=row.likeCount;
