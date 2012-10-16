@@ -24,7 +24,15 @@ function search() {
         
     };
 
-   
+   var request = discussion.messages.get();
+   request.execute(function(response) { 
+   console.log("replies response is " + JSON.stringify(response));
+     if (response.error) {
+            alert(response.error.message);
+        }
+        else {
+            alert("Success");
+   });
    /* if (types.length > 0) {
         params.type = types;
     }*/
