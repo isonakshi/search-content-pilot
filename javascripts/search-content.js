@@ -23,10 +23,7 @@ types.push(this.id);
         
         
     };
-    var request = osapi.jive.core.discussion.answer.get(); 
-    request.execute(function(response) { 
-    console.log("answer is"+response);
-    });
+    
  
     console.log("searching for " + JSON.stringify(params));
     osapi.jive.core.searches.searchContent(params).execute(function(response) {
@@ -127,22 +124,27 @@ document +='</ul>';
 }
 });
 }
+
 if(row.type=="discussion"){
-var documentID = (url.substring(url.lastIndexOf("/"))).substr(1);
-console.log("discussion Id " + documentID);
-var request = osapi.jive.core.discussions.get({id: documentID});
+var discID = (url.substring(url.lastIndexOf("/"))).substr(1);
+console.log("discussion Id " + discID);
+var request = osapi.jive.core.discussions.get({id: discID});
 request.execute(function(response) {
-console.log("searching discussion response is " + JSON.stringify(response.data));
+   
+console.log("Discussion Is " + JSON.stringify(response.data));
 if (response.error) {
 console.log("Error in get: "+response.error.message);
 }
 else
 {
+   
 var request = response.data.container.get();
 request.execute(function(response) {
 if(!response.error) {
 var container = response.data;
 console.log("searching discussion container response is " + JSON.stringify(response.data));
+var tempDisc=container.answer.get();
+console.log("Correct Answer is"+tempDisc);
 if(container instanceof osapi.jive.core.Group) {
 console.log("Display Name" +container.displayName);
 creationDate=container.creationDate;
