@@ -111,8 +111,9 @@ case 09:
     return "Dec";
 break;
 }
-}
 console.log(monthStr);
+}
+
 var finalMonth=monthConvert(dateM);
 
 var newDate=finalMonth+" "+myDate[2]+","+myDate[0]; 
