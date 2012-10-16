@@ -25,6 +25,10 @@ types.push(this.id);
     };
  
     console.log("searching for " + JSON.stringify(params));
+    var answerDisc=osapi.jive.core.discussion.answer.get().execute(funtion(response))
+    {
+    	console.log("my Answer"+answerDisc);
+    }
     osapi.jive.core.searches.searchContent(params).execute(function(response) {
        //console.log("searching response is " + JSON.stringify(response));
        
