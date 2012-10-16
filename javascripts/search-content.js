@@ -128,7 +128,7 @@ document +='</ul>';
 if(row.type=="discussion"){
 var documentID = (url.substring(url.lastIndexOf("/"))).substr(1);
 console.log("discussion Id " + documentID);
-var discRequest= osapi.jive.core.discussion.answer.get({id: documentID});
+var discRequest= osapi.jive.core.discussion.answer.get();
 discRequest.execute(function(response) {
 console.log("Answer to the question is " + JSON.stringify(response.data));
 if (response.error) {
@@ -137,8 +137,8 @@ alert("I need rework");
 else {
 	alert("success");
 }
-var request = osapi.jive.core.discussions.get({id: documentID});
 
+var request = osapi.jive.core.discussions.get({id: documentID});
 request.execute(function(response) {
 console.log("searching discussion response is " + JSON.stringify(response.data));
 if (response.error) {
