@@ -132,6 +132,10 @@ var request = osapi.jive.core.discussions.get({id: discID});
 request.execute(function(response) {
    
 console.log("Discussion Is " + JSON.stringify(response.data));
+var myRequest= response.data.resources.messages.get();
+myRequest.execute(function(response)){
+   console.log("in Messages i am"+JSON.stringify(response.data));
+}
 if (response.error) {
 console.log("Error in get: "+response.error.message);
 }
@@ -143,8 +147,6 @@ request.execute(function(response) {
 if(!response.error) {
 var container = response.data;
 console.log("searching discussion container response is " + JSON.stringify(response.data));
-var tempDisc=container.answer.get();
-console.log("Correct Answer is"+tempDisc);
 if(container instanceof osapi.jive.core.Group) {
 console.log("Display Name" +container.displayName);
 creationDate=container.creationDate;
