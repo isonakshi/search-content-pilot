@@ -23,34 +23,6 @@ types.push(this.id);
         
         
     };
-
-   var current;
-   function loadDiscussions() {
-  console.log("loadDiscussions() started");
-  showMessage("Loading private discussions for '" + user.name + "' ...");
-  user.privateDiscussions.get({
-    limit : 1000
-  }).execute(function(response) {
-    console.log("loadDiscussions() response = " + JSON.stringify(response));
-    var html = '<ul>';
-    discussions = response.data;
-    $.each(discussions, function(index, disc) {
-      html += '<li>';
-      html += '<a href="#" class="discussion-select" data-index="' + index + '">' + disc.message.subject + '</a>';
-      html += ' (' + disc.viewCount + ' views)';
-      html += '</li>';
-    });
-    html += '</ul>';
-    $("#discussions-list").html("").html(html);
-    $(".discussion-select").click(function() {
-      var index = $(this).attr("data-index");
-      current = discussions[index];
-      $(".discussion-subject").html("").html(current.message.subject);
-      showDiscussion();
-    });
-    showOnly("discussions-div");
-  });
-}
  
     console.log("searching for " + JSON.stringify(params));
     osapi.jive.core.searches.searchContent(params).execute(function(response) {
@@ -154,16 +126,6 @@ document +='</ul>';
 if(row.type=="discussion"){
 var documentID = (url.substring(url.lastIndexOf("/"))).substr(1);
 console.log("discussion Id " + documentID);
-var discRequest= osapi.jive.core.discussion.answer.get();
-discRequest.execute(function(response) {
-console.log("Answer to the question is " + JSON.stringify(response.data));
-if (response.error) {
-alert("I need rework");
-}
-else {
-	alert("success");
-}
-
 var request = osapi.jive.core.discussions.get({id: documentID});
 request.execute(function(response) {
 console.log("searching discussion response is " + JSON.stringify(response.data));
