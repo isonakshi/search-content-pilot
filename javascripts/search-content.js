@@ -132,7 +132,7 @@ var request = osapi.jive.core.discussions.get({id: discID});
 request.execute(function(response) {
    
 console.log("Discussion Is " + JSON.stringify(response.data));
-var myRequest= response.data.resources.messages.get();
+var myRequest= response.data.messages.get();
 myRequest.execute(function(response){
    console.log("in Messages i am"+JSON.stringify(response.data));
 });
