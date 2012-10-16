@@ -78,7 +78,7 @@ console.log("Discussion Is " + JSON.stringify(response.data));
 var myRequest= response.data.messages.get();
 myRequest.execute(function(response){
 if (response.error) {
-            alert(response.error.message);
+            alert("Nothing");
         }
         else {
 var answers = response.data;
@@ -90,6 +90,8 @@ console.log("Helpful Answer"+answer.id);
 }
 else{
 console.log("Not Helpful"+answer.id);
+}
+});
 }
 });
 if (response.error) {
@@ -130,7 +132,7 @@ discussion +='<li>Created:'+creationDate+'</li>';
 discussion +='<li>Last Modified:'+modifiedDate+'</li>';
 discussion +='<li>Replies:'+replyCount+'</li>';
 discussion +='<li>Likes:'+likeCount+'</li>';
-discussion +='</ul>';	
+discussion +='</ul>';   
 }
 }
 
