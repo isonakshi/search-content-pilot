@@ -71,7 +71,7 @@ dateM=myDate[1];
 
 
 function monthConvert(d){
-	console.log("In Month convert");
+	console.log("In Month convert"+d);
 
 var outMonth="";
     switch (d) {
