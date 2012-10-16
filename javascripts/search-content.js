@@ -23,7 +23,7 @@ types.push(this.id);
         
         
     };
-    var request = osapi.jive.core.discussions.private.get({userId: '@viewer'}); 
+    var request = osapi.jive.core.discussion.answer.get(); 
     request.execute(function(response) { 
     console.log("answer is"+response);
     });
