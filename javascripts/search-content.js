@@ -67,23 +67,11 @@ var str="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-var dateM= myDate[1];
+var dateM[]= myDate[1];
 var x="";
-foreach ($[0] as $key => $value) {
+foreach ($myDate[1] as $key => $x) {
     switch ($key) {
-        case 'Products' :
-            // do something
-            break ;
-        case 'customers' :
-            // do something
-            break ;
-        case 'Models' :
-            // do something
-            break ;
-     }
-
-switch (dateM){
-case 01:
+        case 01:
     x="Jan";
     break;
   case 02:
@@ -120,7 +108,6 @@ case 09:
     x="Dec";
 break;
 }
-
 
 var newDate=x+myDate[2]+","+myDate[0]; 
 
