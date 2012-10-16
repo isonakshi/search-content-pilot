@@ -67,9 +67,7 @@ var str="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-function monthConvert(d){
-	
-var dateM={01 02 03 04 05 06 07 08 09 10 11 12};
+dateM=myDate[1];
     switch (dateM) {
         case 01:
     d="Jan";
@@ -108,9 +106,8 @@ case 09:
     d="Dec";
 break;
 }
-}
-var monthName=monthConvert(myDate[1]);
-var newDate=monthName+myDate[2]+","+myDate[0]; 
+
+var newDate=dateM+myDate[2]+","+myDate[0]; 
 
 
                     likeCount=row.likeCount;
