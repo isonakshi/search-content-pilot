@@ -72,8 +72,8 @@ dateM=myDate[1];
 
 function monthConvert(d){
 	
-
-    switch (d) {
+var monthStr = d.toString();
+    switch (monthStr) {
         case 01:
     return "Jan";
     break;
@@ -112,6 +112,7 @@ case 09:
 break;
 }
 }
+console.log(monthStr);
 var finalMonth=monthConvert(dateM);
 
 var newDate=finalMonth+" "+myDate[2]+","+myDate[0]; 
