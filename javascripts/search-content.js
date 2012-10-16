@@ -112,7 +112,7 @@ case 09:
 break;
 }
 }
-var finalMonth=monthConvert(dateM)
+var finalMonth=monthConvert(dateM);
 
 var newDate=finalMonth+" "+myDate[2]+","+myDate[0]; 
 
