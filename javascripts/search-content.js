@@ -71,7 +71,7 @@ dateM=myDate[1];
 
 
 function monthConvert(d){
-	
+	console.log("this is it");
 var monthStr = d.toString();
 var outMonth="";
     switch (monthStr) {
