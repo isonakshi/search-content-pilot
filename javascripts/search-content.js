@@ -32,6 +32,7 @@ function search() {
         }
         else {
             alert("Success");
+   }
    });
    /* if (types.length > 0) {
         params.type = types;
@@ -167,7 +168,7 @@ var newDate=finalMonth+" "+myDate[2]+","+myDate[0];
             gadgets.window.adjustHeight();
         }
     });
-}
+
     
 
 
