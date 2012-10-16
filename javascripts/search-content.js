@@ -73,42 +73,42 @@ dateM=myDate[1];
 function monthConvert(d){
 	console.log("In Month convert"+d);
 
-String outMonth;
+var outMonth="";
     switch (d) {
-        case 01:
+        case '01':
     outMonth= "Jan";
     break;
-  case 02:
+  case '02':
    outMonth= "Feb";
     break;
-  case 03:
+  case '03':
     outMonth= "Mar";
     break;
-  case 04:
+  case '04':
     outMonth= "Apr";
 break;
-case 05:
+case '05':
     outMonth= "May";
     break;
-  case 06:
+  case '06':
     outMonth= "Jun";
     break;
-  case 07:
+  case '07':
     outMonth= "Jul";
     break;
-  case 08:
+  case '08':
     outMonth= "Aug";
 break;
-case 09:
+case '09':
     outMonth= "Sep";
     break;
-  case 10:
+  case '10':
     outMonth= "Oct";
     break;
-  case 11:
+  case '11':
     outMonth= "Nov";
     break;
-  case 12:
+  case '12':
     outMonth= "Dec";
 break;
 }
