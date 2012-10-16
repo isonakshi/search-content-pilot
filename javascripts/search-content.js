@@ -12,9 +12,9 @@ function search() {
     $("search-results").html("");
     gadgets.window.adjustHeight();
    /* var types = [];
-    $("input:checked").each(function() {
-        types.push(this.id);
-    });*/
+$("input:checked").each(function() {
+types.push(this.id);
+});*/
     var params = {
         //limit : $("#limit").val(),
         query : $("#query").val(),
@@ -24,146 +24,188 @@ function search() {
         
     };
 
-   var request = osapi.jive.core.Discussion.messages.get();
-   request.execute(function(response) { 
-   console.log("replies response is " + JSON.stringify(response));
-    
-   });
-   /* if (types.length > 0) {
-        params.type = types;
-    }*/
+   
+ 
     console.log("searching for " + JSON.stringify(params));
     osapi.jive.core.searches.searchContent(params).execute(function(response) {
-       console.log("searching response is " + JSON.stringify(response));
+       //console.log("searching response is " + JSON.stringify(response));
        
         if (response.error) {
             alert(response.error.message);
         }
         else {
+var rows = response.data;
+
             var html = "";
-			var blog="";
-			var discussion="";
-			var update="";
-			var document="";
-			var post="";
-			
-            var rows = response.data;
+var blog="";
+var discussion="";
+var update="";
+var document="";
+var post="";
+
             var url="";
             var subject="";
             var contentSummary="";
             var author="";
             var avatar="";
-           var myDate="";
+            var modifiedDate="";
             var likeCount="";
+var replyCount="";
             var type="";
             var username="";
-var str="";
-
-
+            var creationDate="";
+var name="";
+var displayName="";
             
+$.each(rows, function(index, row) {
+url=row.resources.html.ref;
+subject=row.subject;
+contentSummary=row.contentSummary;
+author=row.author.name;
+modifiedDate=row.modificationDate;
+likeCount=row.likeCount;
+replyCount=row.replyCount;
+type=row.type;
+avatar=row.author.avatarURL;
+username=row.author.username;
 
-            
-            $.each(rows, function(index, row) {   
-                    url=row.resources.html.ref;
-                    subject=row.subject;
-                    contentSummary=row.contentSummary;
-                    author=row.author.name;
-                    str=row.modificationDate.substr(0,10);
-                  myDate=str; 
-myDate=myDate.split("-"); 
-dateM=myDate[1];
-
-
-function monthConvert(d){
-
-var outMonth="";
-    switch (d) {
-        case '01':
-    outMonth= "Jan";
-    break;
-  case '02':
-   outMonth= "Feb";
-    break;
-  case '03':
-    outMonth= "Mar";
-    break;
-  case '04':
-    outMonth= "Apr";
-break;
-case '05':
-    outMonth= "May";
-    break;
-  case '06':
-    outMonth= "Jun";
-    break;
-  case '07':
-    outMonth= "Jul";
-    break;
-  case '08':
-    outMonth= "Aug";
-break;
-case '09':
-    outMonth= "Sep";
-    break;
-  case '10':
-    outMonth= "Oct";
-    break;
-  case '11':
-    outMonth= "Nov";
-    break;
-  case '12':
-    outMonth= "Dec";
-break;
+if(row.type=="document"){
+/* var documentID = (url.substring(url.lastIndexOf("/"))).substr(1);
+console.log("documents Id " + documentID); */
+var finalDocID = (url.substring(url.lastIndexOf("-"))).substr(1);
+console.log("finalDocID Id " + finalDocID);
+var request = osapi.jive.core.documents.get({id: finalDocID});
+request.execute(function(response) {
+console.log("searching documents response is " + JSON.stringify(response.data));
+if (response.error) {
+console.log("Error in get: "+response.error.message);
 }
-return outMonth;
+else
+{
+var request = response.data.container.get();
+request.execute(function(response) {
+if(!response.error) {
+var container = response.data;
+console.log("searching documents container response is " + JSON.stringify(response.data));
+if(container instanceof osapi.jive.core.Group) {
+console.log("Display Name" +container.displayName);
+creationDate=container.creationDate;
+if(container.displayName == "accenturetest")
+{
+console.log("I am here!");
+document +='<ul>';
+document +='<li class="document"/>';
+document +='<a href="'+url+'">'+subject+'</a></li>';
+document +='</ul>';
+
+document +='<h5>';
+document +='<ul>';
+document +='<li>Created by<a href=https://apps-onprem.jivesoftware.com/people/'+username+'>'+author+'</a></li>';
+document +='</ul>';
+
+document +='<ul>';
+document +='<b>';
+document +='<li>'+contentSummary+'</li>';
+document +='</b>';
+document +='</ul>';
+
+document +='<ul>';
+document +='<li>Created:'+creationDate+'</li>';
+document +='<li>Last Modified:'+modifiedDate+'</li>';
+document +='<li>Replies:'+replyCount+'</li>';
+document +='<li>Likes:'+likeCount+'</li>';
+document +='</ul>';	
+}
 }
 
-var finalMonth=monthConvert(dateM);
+}
 
-var newDate=finalMonth+" "+myDate[2]+","+myDate[0]; 
+});
 
+}
+});
+}
+if(row.type=="discussion"){
+var documentID = (url.substring(url.lastIndexOf("/"))).substr(1);
+console.log("discussion Id " + documentID);
+var discRequest= osapi.jive.core.discussion.answer.get({id: documentID});
+discRequest.execute(function(response) {
+console.log("Answer to the question is " + JSON.stringify(response.data));
+if (response.error) {
+alert("I need rework");
+}
+else {
+	alert("success");
+}
+var request = osapi.jive.core.discussions.get({id: documentID});
 
-                    likeCount=row.likeCount;
-                    type=row.type;
-                    avatar=row.author.avatarURL;
-                    username=row.author.username;
-               
-			   if(row.type=="discussion")
-               {
-                     
-					discussion +='<ul>';
-                    discussion +='<li class="discussion"/>';
-                    discussion +='<li><a href="'+url+'">'+subject+'</a></li>';
-                    discussion +='</ul>';
-                    discussion +='<ul>';
-                    discussion +='<li>&nbsp;</li>';
-                    discussion +='<li>'+contentSummary+'</li>';
-                    discussion +='</ul>';
-                    discussion +='<ul>';
-                    discussion +='<li><img src="'+ avatar + '" width=\'25px\' height=\'25px\' border=\'0\'/></li>';
-                    discussion +='<li><a href=https://apps-onprem.jivesoftware.com/people/'+username+'>'+author+'</a></li>';
-                    discussion +='<li>'+likeCount+'</li>';
-                    discussion +='<li>'+newDate+'</li>';
-                    discussion +='</ul>';
-                  
-               }
-			  
-            });
+request.execute(function(response) {
+console.log("searching discussion response is " + JSON.stringify(response.data));
+if (response.error) {
+console.log("Error in get: "+response.error.message);
+}
+else
+{
+var request = response.data.container.get();
+request.execute(function(response) {
+if(!response.error) {
+var container = response.data;
+console.log("searching discussion container response is " + JSON.stringify(response.data));
+if(container instanceof osapi.jive.core.Group) {
+console.log("Display Name" +container.displayName);
+creationDate=container.creationDate;
+if(container.displayName == "accenturetest")
+{
+console.log("I am here!");
+discussion +='<ul>';
+discussion +='<li class="document"/>';
+discussion +='<a href="'+url+'">'+subject+'</a></li>';
+discussion +='</ul>';
+
+discussion +='<h5>';
+discussion +='<ul>';
+discussion +='<li>Created by<a href=https://apps-onprem.jivesoftware.com/people/'+username+'>'+author+'</a></li>';
+discussion +='</ul>';
+
+discussion +='<ul>';
+discussion +='<b>';
+discussion +='<li>'+contentSummary+'</li>';
+discussion +='</b>';
+discussion +='</ul>';
+
+discussion +='<ul>';
+discussion +='<li>Created:'+creationDate+'</li>';
+discussion +='<li>Last Modified:'+modifiedDate+'</li>';
+discussion +='<li>Replies:'+replyCount+'</li>';
+discussion +='<li>Likes:'+likeCount+'</li>';
+discussion +='</ul>';	
+}
+}
+
+}
+
+});
+
+}
+});
+}
+
+});
             
             
-            html +=discussion;
-			html +="<br>"+document;
-			html +="<br>"+update;
-			html +="<br>"+post;
-			html +="<br>"+blog;
-			
-             console.log(html);
-            $("#search-results").html(html);
-            $("#search-info").show();
-            gadgets.window.adjustHeight();
+html +=discussion;
+html +="<br>"+document;
+html +="<br>"+update;
+html +="<br>"+post;
+html +="<br>"+blog;
+
+// console.log(html);
+$("#search-results").html(html);
+$("#search-info").show();
+gadgets.window.adjustHeight();
         }
     });
-
+}
     
 
 
