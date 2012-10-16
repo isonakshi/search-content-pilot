@@ -67,12 +67,49 @@ var str="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-var monthName="";
-if myDate[1]='01'{
-	monthName='Jan';
+function monthConvert(d){
+	
+var dateM={01 02 03 04 05 06 07 08 09 10 11 12};
+    switch (dateM) {
+        case 01:
+    d="Jan";
+    break;
+  case 02:
+    d="Feb";
+    break;
+  case 03:
+    d="Mar";
+    break;
+  case 04:
+    d="Apr";
+break;
+case 05:
+    d="May";
+    break;
+  case 06:
+    d="Jun";
+    break;
+  case 07:
+    d="Jul";
+    break;
+  case 08:
+    d="Aug";
+break;
+case 09:
+    d="Sep";
+    break;
+  case 10:
+    d="Oct";
+    break;
+  case 11:
+    d="Nov";
+    break;
+  case 12:
+    d="Dec";
+break;
 }
-else { monthName='Sep'}
-
+}
+var monthName=monthConvert(myDate[1]);
 var newDate=monthName+myDate[2]+","+myDate[0]; 
 
 
