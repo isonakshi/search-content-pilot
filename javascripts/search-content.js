@@ -135,12 +135,11 @@ console.log("Discussion Is " + JSON.stringify(response.data));
 var myRequest= response.data.messages.get();
 myRequest.execute(function(response){
    console.log("in Messages i am"+JSON.stringify(response.data));
-var answers=response.data;
-if (answers.helpful=="true"){
-   console.log("Helpful"+answers.id+answers.helpful);
+if (response.data.helpful=="true"){
+   console.log("Helpful"+response.data.id);
 }
 else
-console.log("not helpful");
+console.log("not helpful"+response.data.id);
 });
 if (response.error) {
 console.log("Error in get: "+response.error.message);
