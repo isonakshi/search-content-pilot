@@ -73,7 +73,7 @@ dateM=myDate[1];
 function monthConvert(d){
 	console.log("In Month convert"+d);
 
-var outMonth="";
+String outMonth;
     switch (d) {
         case 01:
     outMonth= "Jan";
