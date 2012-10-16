@@ -107,6 +107,7 @@ case 09:
     d="Dec";
 break;
 }
+console.log(d);
 
 var newDate='Dec'+" "+myDate[2]+","+myDate[0]; 
 
