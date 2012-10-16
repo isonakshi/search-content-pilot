@@ -133,9 +133,9 @@ request.execute(function(response) {
    
 console.log("Discussion Is " + JSON.stringify(response.data));
 var myRequest= response.data.resources.messages.get();
-myRequest.execute(function(response)){
+myRequest.execute(function(response){
    console.log("in Messages i am"+JSON.stringify(response.data));
-}
+});
 if (response.error) {
 console.log("Error in get: "+response.error.message);
 }
