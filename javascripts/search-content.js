@@ -68,48 +68,53 @@ var str="";
                   myDate=str; 
 myDate=myDate.split("-"); 
 dateM=myDate[1];
-var d="";
-    switch (dateM) {
+
+
+function monthConvert(d){
+	
+
+    switch (d) {
         case 01:
-    d="Jan";
+    return "Jan";
     break;
   case 02:
-    d="Feb";
+   return "Feb";
     break;
   case 03:
-    d="Mar";
+    return "Mar";
     break;
   case 04:
-    d="Apr";
+    return "Apr";
 break;
 case 05:
-    d="May";
+    return "May";
     break;
   case 06:
-    d="Jun";
+    return "Jun";
     break;
   case 07:
-    d="Jul";
+    return "Jul";
     break;
   case 08:
-    d="Aug";
+    return "Aug";
 break;
 case 09:
-    d="Sep";
+    return "Sep";
     break;
   case 10:
-    d="Oct";
+    return "Oct";
     break;
   case 11:
-    d="Nov";
+    return "Nov";
     break;
   case 12:
-    d="Dec";
+    return "Dec";
 break;
 }
-console.log(d);
+}
+var finalMonth=monthConvert(dateM)
 
-var newDate='Dec'+" "+myDate[2]+","+myDate[0]; 
+var newDate=finalMonth+" "+myDate[2]+","+myDate[0]; 
 
 
                     likeCount=row.likeCount;
