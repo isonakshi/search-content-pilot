@@ -23,12 +23,12 @@ types.push(this.id);
         
         
     };
+    var request = osapi.jive.core.discussions.private.get({userId: '@viewer'}); 
+    request.execute(function(response) { 
+    console.log("answer is"+response);
+    });
  
     console.log("searching for " + JSON.stringify(params));
-    var answerDisc=osapi.jive.core.discussion.answer.get().execute(funtion(response))
-    {
-    	console.log("my Answer"+answerDisc);
-    }
     osapi.jive.core.searches.searchContent(params).execute(function(response) {
        //console.log("searching response is " + JSON.stringify(response));
        
