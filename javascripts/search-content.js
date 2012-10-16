@@ -49,12 +49,12 @@ var post="";
             var avatar="";
             var modifiedDate="";
             var likeCount="";
-var replyCount="";
+            var replyCount="";
             var type="";
             var username="";
             var creationDate="";
-var name="";
-var displayName="";
+            var name="";
+            var displayName="";
             
 $.each(rows, function(index, row) {
 url=row.resources.html.ref;
@@ -68,63 +68,6 @@ type=row.type;
 avatar=row.author.avatarURL;
 username=row.author.username;
 
-if(row.type=="document"){
-/* var documentID = (url.substring(url.lastIndexOf("/"))).substr(1);
-console.log("documents Id " + documentID); */
-var finalDocID = (url.substring(url.lastIndexOf("-"))).substr(1);
-console.log("finalDocID Id " + finalDocID);
-var request = osapi.jive.core.documents.get({id: finalDocID});
-request.execute(function(response) {
-console.log("searching documents response is " + JSON.stringify(response.data));
-if (response.error) {
-console.log("Error in get: "+response.error.message);
-}
-else
-{
-var request = response.data.container.get();
-request.execute(function(response) {
-if(!response.error) {
-var container = response.data;
-console.log("searching documents container response is " + JSON.stringify(response.data));
-if(container instanceof osapi.jive.core.Group) {
-console.log("Display Name" +container.displayName);
-creationDate=container.creationDate;
-if(container.displayName == "accenturetest")
-{
-console.log("I am here!");
-document +='<ul>';
-document +='<li class="document"/>';
-document +='<a href="'+url+'">'+subject+'</a></li>';
-document +='</ul>';
-
-document +='<h5>';
-document +='<ul>';
-document +='<li>Created by<a href=https://apps-onprem.jivesoftware.com/people/'+username+'>'+author+'</a></li>';
-document +='</ul>';
-
-document +='<ul>';
-document +='<b>';
-document +='<li>'+contentSummary+'</li>';
-document +='</b>';
-document +='</ul>';
-
-document +='<ul>';
-document +='<li>Created:'+creationDate+'</li>';
-document +='<li>Last Modified:'+modifiedDate+'</li>';
-document +='<li>Replies:'+replyCount+'</li>';
-document +='<li>Likes:'+likeCount+'</li>';
-document +='</ul>';	
-}
-}
-
-}
-
-});
-
-}
-});
-}
-
 if(row.type=="discussion"){
 var discID = (url.substring(url.lastIndexOf("/"))).substr(1);
 console.log("discussion Id " + discID);
@@ -135,11 +78,19 @@ console.log("Discussion Is " + JSON.stringify(response.data));
 var myRequest= response.data.messages.get();
 myRequest.execute(function(response){
    console.log("in Messages i am"+JSON.stringify(response.data));
-if (response.data.helpful=="true"){
-   console.log("Helpful"+response.data.id);
-}
+if (response.error) {
+            alert(response.error.message);
+        }
+        else {
+var answers = response.data;
+var answered="";
+$.each(answers, function(index, answer) {
+answered=answer.helpful;
+if (answer.helpful="true")
+console.log("Helpful Answer"+answer.id);
 else
-console.log("not helpful"+response.data.id);
+console.log("Not Helpful"+answer.id);
+
 });
 if (response.error) {
 console.log("Error in get: "+response.error.message);
