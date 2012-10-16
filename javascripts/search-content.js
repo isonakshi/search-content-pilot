@@ -68,6 +68,7 @@ var str="";
                   myDate=str; 
 myDate=myDate.split("-"); 
 dateM=myDate[1];
+var d="";
     switch (dateM) {
         case 01:
     d="Jan";
@@ -107,7 +108,7 @@ case 09:
 break;
 }
 
-var newDate=dateM+myDate[2]+","+myDate[0]; 
+var newDate=d+myDate[2]+","+myDate[0]; 
 
 
                     likeCount=row.likeCount;
