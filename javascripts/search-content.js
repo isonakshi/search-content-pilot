@@ -67,49 +67,13 @@ var str="";
                     str=row.modificationDate.substr(0,10);
                   myDate=str; 
 myDate=myDate.split("-"); 
-var dateM= myDate[1];
-var x="";
-
-    switch (dateM) {
-        case 01:
-    x="Jan";
-    break;
-  case 02:
-    x="Feb";
-    break;
-  case 03:
-    x="Mar";
-    break;
-  case 04:
-    x="Apr";
-break;
-case 05:
-    x="May";
-    break;
-  case 06:
-    x="Jun";
-    break;
-  case 07:
-    x="Jul";
-    break;
-  case 08:
-    x="Aug";
-break;
-case 09:
-    x="Sep";
-    break;
-  case 10:
-    x="Oct";
-    break;
-  case 11:
-    x="Nov";
-    break;
-  case 12:
-    x="Dec";
-break;
+var monthName="";
+if myDate[1]='01'{
+	monthName='Jan';
 }
+else { monthName='Sep'}
 
-var newDate=x+myDate[2]+","+myDate[0]; 
+var newDate=monthName+myDate[2]+","+myDate[0]; 
 
 
                     likeCount=row.likeCount;
