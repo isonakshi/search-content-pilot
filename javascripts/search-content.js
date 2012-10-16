@@ -77,7 +77,6 @@ request.execute(function(response) {
 console.log("Discussion Is " + JSON.stringify(response.data));
 var myRequest= response.data.messages.get();
 myRequest.execute(function(response){
-   console.log("in Messages i am"+JSON.stringify(response.data));
 if (response.error) {
             alert(response.error.message);
         }
@@ -86,11 +85,12 @@ var answers = response.data;
 var answered="";
 $.each(answers, function(index, answer) {
 answered=answer.helpful;
-if (answer.helpful="true")
+if (answer.helpful="true"){
 console.log("Helpful Answer"+answer.id);
-else
+}
+else{
 console.log("Not Helpful"+answer.id);
-
+}
 });
 if (response.error) {
 console.log("Error in get: "+response.error.message);
