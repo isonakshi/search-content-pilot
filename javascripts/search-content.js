@@ -55,8 +55,8 @@ var post="";
             var creationDate="";
             var name="";
             var displayName="";
-            var replyMsg="";
-$.each(rows, function(index, row) {
+var helpful="";
+          $.each(rows, function(index, row) {
 url=row.resources.html.ref;
 subject=row.subject;
 contentSummary=row.contentSummary;
@@ -83,10 +83,10 @@ if (response.error) {
             alert("Nothing");
         }
         else {
-var replyRows = response.data;
+ var replyRows = response.data;
 $.each(replyRows, function(index, replyRow) {
-replyMsg=replyRow.helpful;
-console.log("Helpful Answer"+replyRow.id+replyMsg);
+helpful=replyRow.helpful;
+console.log("Helpful Answer"+replyRow.id+helpful);
 });
 }
 });
