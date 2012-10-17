@@ -85,10 +85,10 @@ var replyRows = response.data;
 $.each(replyRows, function(index, replyRow) {
 replyMsg=replyRow.helpful;
 if (replyRow.helpful=="true"){
-console.log("Helpful Answer"+answer.id);
+console.log("Helpful Answer"+replyRow.id);
 }
 else{
-console.log("Not Helpful"+answer.id);
+console.log("Not Helpful"+replyRow.id);
 }
 });
 }
