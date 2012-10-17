@@ -57,6 +57,7 @@ var post="";
             var displayName="";
 var helpful="";
 var answer="";
+var replyType="";
           $.each(rows, function(index, row) {
 url=row.resources.html.ref;
 subject=row.subject;
@@ -88,7 +89,21 @@ if (response.error) {
 $.each(replyRows, function(index, replyRow) {
 helpful=replyRow.helpful;
 answer=replyRow.answer;
-console.log("Helpful Answer"+replyRow.id+helpful+answer);
+if (helpful=="true")
+  {
+replyType=helpful;
+console.log("Helpful Answer"+ replyRow.id);
+    }
+else if (answer=="true")
+  {
+replyType=answer;
+console.log("Correct Answer"+ replyRow.id);
+}
+else
+  {
+console.log("No Answer");
+  }
+
 });
 }
 });
