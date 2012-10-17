@@ -85,7 +85,7 @@ var answers = response.data;
 var answered="";
 $.each(answers, function(index, answer) {
 answered=answer.helpful;
-if (answer.helpful="true"){
+if (answer.helpful=="true"){
 console.log("Helpful Answer"+answer.id);
 }
 else{
