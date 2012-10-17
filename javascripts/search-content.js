@@ -55,7 +55,7 @@ var post="";
             var creationDate="";
             var name="";
             var displayName="";
-            
+            var replyMsg="";
 $.each(rows, function(index, row) {
 url=row.resources.html.ref;
 subject=row.subject;
@@ -81,11 +81,10 @@ if (response.error) {
             alert("Nothing");
         }
         else {
-var answers = response.data;
-var answered="";
-$.each(answers, function(index, answer) {
-answered=answer.helpful;
-if (answer.helpful=="true"){
+var replyRows = response.data;
+$.each(replyRows, function(index, replyRow) {
+replyMsg=replyRow.helpful;
+if (replyRow.helpful=="true"){
 console.log("Helpful Answer"+answer.id);
 }
 else{
